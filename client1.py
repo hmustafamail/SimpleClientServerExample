@@ -1,6 +1,8 @@
 # A simple client example
 # Mustafa Hussain (TA) For Networks, Dr. Dean Bushey, Spring 2016, FL Poly
 
+#!/bin/env python2.7
+
 import socket
 import sys
 

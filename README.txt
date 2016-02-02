@@ -1,6 +1,7 @@
 In Windows:
 
-1. Ensure you have Python 2.7.* installed.
+1. Ensure you have Python 2.7.* installed. This is different from 
+    Python 3. This code will not run on Python 3.
 
 2. Open two command line windows here
     a. SHIFT-right-click in the file browser window

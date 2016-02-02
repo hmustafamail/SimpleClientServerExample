@@ -1,6 +1,8 @@
 # A simple server example
 # Mustafa Hussain (TA) For Networks, Dr. Dean Bushey, Spring 2016, FL Poly
 
+#!/bin/env python2.7
+
 import SocketServer
 
 # From https://docs.python.org/2/library/socketserver.html
