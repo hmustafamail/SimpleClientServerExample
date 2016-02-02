@@ -1,7 +1,16 @@
+#!/bin/env python2.7
+
 # A simple server example
 # Mustafa Hussain (TA) For Networks, Dr. Dean Bushey, Spring 2016, FL Poly
 
-#!/bin/env python2.7
+# Check Python version
+import sys
+badVersion = (3,0)
+currentVersion = sys.version_info
+
+if currentVersion >= badVersion:
+   print("You are using Python 3. Please download Python 2.7 at python.org")
+   exit()
 
 import SocketServer
 
@@ -18,8 +27,8 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
     def handle(self):
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
-        print "{} wrote:".format(self.client_address[0])
-        print self.data
+        print("{} wrote:".format(self.client_address[0]))
+        print(self.data)
         
         # just send back the same data, but upper-cased
         self.request.sendall(self.data.upper())

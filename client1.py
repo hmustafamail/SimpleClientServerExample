@@ -1,10 +1,18 @@
+#!/bin/env python2.7
+
 # A simple client example
 # Mustafa Hussain (TA) For Networks, Dr. Dean Bushey, Spring 2016, FL Poly
 
-#!/bin/env python2.7
+# Check Python version
+import sys
+badVersion = (3,0)
+currentVersion = sys.version_info
+
+if currentVersion >= badVersion:
+   print("You are using Python 3. Please download Python 2.7 at python.org")
+   exit()
 
 import socket
-import sys
 
 # We will write to the server at their address.
 HOST = "localhost"
@@ -39,7 +47,7 @@ finally:
     sock.close()
 
 # This shows the user what we sent to the sever...
-print "Sent:     {}".format(data)
+print("Sent:     {}".format(data))
 
 # ...and what we got back from the server.
-print "Received: {}".format(received)
+print("Received: {}".format(received))
