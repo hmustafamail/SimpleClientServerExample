@@ -20,3 +20,5 @@ In Windows:
 
         Sent: hello world
         Received: HELLO WORLD
+
+Copyright for all code in this repository: CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)
