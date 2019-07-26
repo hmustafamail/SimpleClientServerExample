@@ -1,21 +1,11 @@
-#!/bin/env python2.7
-
 # A simple server example
-# Mustafa Hussain (TA) For Networks, Dr. Dean Bushey, Spring 2016, FL Poly
+# Mustafa Hussain, MS
 
-# Check Python version
 import sys
-badVersion = (3,0)
-currentVersion = sys.version_info
-
-if currentVersion >= badVersion:
-   print("You are using Python 3. Please download Python 2.7 at python.org")
-   exit()
-
-import SocketServer
+import socketserver
 
 # From https://docs.python.org/2/library/socketserver.html
-class MyTCPHandler(SocketServer.BaseRequestHandler):
+class MyTCPHandler(socketserver.BaseRequestHandler):
     """
     The RequestHandler class for our server.
 
@@ -25,19 +15,28 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
     """
 
     def handle(self):
+        '''
+        This method is called when the server receives a message
+        '''
+
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
+
+        # Print something to the console
         print("{} wrote:".format(self.client_address[0]))
         print(self.data)
         
-        # just send back the same data, but upper-cased
+        # Capitalize the message and send it back
         self.request.sendall(self.data.upper())
 
 if __name__ == "__main__":
-    HOST, PORT = "localhost", 9999
+
+    # This server is going to run on port 9999, on this computer
+    HOST = "localhost"
+    PORT = 9999
 
     # Create the server, binding to localhost on port 9999
-    server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
+    server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
     
     # Activate the server; this will keep running until you
     # interrupt the program with Ctrl-C
