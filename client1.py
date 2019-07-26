@@ -1,17 +1,7 @@
-#!/bin/env python2.7
-
 # A simple client example
-# Mustafa Hussain (TA) For Networks, Dr. Dean Bushey, Spring 2016, FL Poly
+# Mustafa Hussain, MS
 
-# Check Python version
 import sys
-badVersion = (3,0)
-currentVersion = sys.version_info
-
-if currentVersion >= badVersion:
-   print("You are using Python 3. Please download Python 2.7 at python.org")
-   exit()
-
 import socket
 
 # We will write to the server at their address.
@@ -37,12 +27,13 @@ try:
     # Send our message to the server. 
     # '\n' is known as the newline character.
     # It's what happens when you hit the ENTER key in a text editor.
-    sock.sendall(data + "\n")
+    message = data + "\n"
+    sock.sendall(message.encode('utf-8'))
 
     # Receive the message from the server.
-    received = sock.recv(1024)
+    received = sock.recv(1024).decode('utf-8')
     
-# "...and whether or not it fails, do this."
+# "...and whether or not it fails, close the socket safely."
 finally:
     sock.close()
 
@@ -51,3 +42,4 @@ print("Sent:     {}".format(data))
 
 # ...and what we got back from the server.
 print("Received: {}".format(received))
+
